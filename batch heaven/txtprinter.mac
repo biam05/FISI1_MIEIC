@@ -1,0 +1,15 @@
+/*DO NOT REMOVE THIS*/
+pth: load_pathname$
+
+/* Input argument is txt name, like "batches.txt" */
+readtxt(txtname):=(
+	this_file_name: "txtprinter.mac",
+	file_to_print: txtname,
+
+	rawpth: substring(pth,1,slength(pth)-slength(this_file_name)+1),
+	finalpth: concat(rawpth, file_to_print),
+	fstream: openr(finalpth),
+	while stringp( tmp:readline(fstream) ) do print(tmp),
+	close(fstream),
+	print("")
+)$

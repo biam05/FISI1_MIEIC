@@ -1,0 +1,57 @@
+/*
+	Parâmetros:
+	u: velocidade de fase ([u1,u2])
+	var: variáveis de estado ([var1,var2])
+-props rui alves, tks
+*/
+
+sd(u,var):=(
+	P:solve(u,var),
+	l:length(P),
+	J:jacobian(u,var),
+	A:makelist(subst(P[i],J),i,1,l),
+	EV:map(eigenvalues,A),
+
+	print(""),
+	print("Pontos de Equilibrio:"),
+	for j:1 thru l do(
+		if imagpart(rhs(P[j][1])=0) then print("Pto ",j,": ",float(P[j]))
+		),
+
+	print(""),
+	print("--------------------------------"),
+	print("Jacobiana:"),
+	print(J),
+
+	print(""),
+	print("--------------------------------"),
+	print("Eigen Values:"),
+	for j:1 thru length(EV) do(
+		print(""),
+		if imagpart(rhs(P[j][1])=0) then(
+			print("Ponto ",j," = (",rhs(P[j][1]),",",rhs(P[j][2]),") :"),
+			if length(EV[j][2]) = 1 then(
+				print("Lambda1 = Lambda2 = ",EV[j][1][1]),
+				classifyEV(EV[j][1][1],EV[j][1][1])
+			)else(
+				print("Lambda1 = ",rectform(EV[j][1][1]), "  ,  Lambda2 = ",rectform(EV[j][1][2])),
+				classifyEV(EV[j][1][1],EV[j][1][2])
+			))),
+	print(""),
+	print("")
+);
+
+classifyEV(a,b):=(
+	if (a=0 and b=0) then print("Ambos iguais a 0  -->  Impossível classificar")
+	else if (imagpart(a)=0 and imagpart(b)=0) then (
+		if (a=b) then (
+			if (a>0) then print("1 real, positivo  -->  Nó impróprio repulsivo, Instável.") else print("1 real, negativo  -->  Nó impróprio atrativo, Estável.")
+		)
+		else if (a>0 and b>0) then print("2 reais, positivos  -->  Nó repulsivo, Instável.")
+		else if (a<0 and b<0) then print("2 reais, negativos  -->  Nó atrativo, Estável.")
+		else print("2 reais, sinais opostos  -->  Ponto de Sela, Instável.")
+	) else if (realpart(a)=0 and realpart(b)=0) then print("2 imaginários  -->  Centro, Estável.")
+	else if (realpart(a)>0) then print("2 complexos, parte real positiva  -->  Foco repulsivo, Instável.")
+	else if (realpart(a)<0) then print("2 complexos, parte real negativa  -->  Foco atrativo, Estável."),
+	print("")
+);

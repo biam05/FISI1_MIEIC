@@ -1,0 +1,91 @@
+load("basic")$
+load("nchrpl")$
+fpprintprec: 4$
+
+IsImag(x) := if (imagpart(x) # 0) then true else false$
+IsTrueImag(x) := if (IsImag(x) and realpart(x) = 0) then true else false$
+
+IsDoubleEigen(x) := if (length(x[1]) = 1) then true else false$ /* x é uma lista retornada por eigenvalues */
+
+SistAnalyse(f, vars) := block(
+    [
+        j: jacobian(f, vars)
+    ],
+    
+    /* - Se f(x=0) != 0 e g(y=0) != 0 então o sist. não representa 2 espécias */
+    if (ev(f[1], vars[1] = 0) # 0 and ev(f[2], vars[2] = 0) # 0) then
+        print("sistema não representa duas espécies")
+    else
+        print("sistema representa duas espécies"),
+    
+    /* - Se Tr(J) for diff 0 então o sist. é não conservativo (else conservativo) */
+    
+    if (mattrace(j) # 0) then
+        print("sistema não conservativo")
+    else
+        print("sistema conservativo"),
+    
+    assume(vars[1] > 0),
+    assume(vars[2] > 0),
+    
+    print("taxa de crescimento de", vars[1], ":", f[1]/vars[1]),
+    print("taxa de crescimento de", vars[2], ":", f[2]/vars[2]),
+    
+    if (j[1][2] > 0 and j[2][1] > 0) then
+        print("sistema com cooperação"),
+    if (j[1][2] < 0 and j[2][1] < 0) then
+        print("sistema com competição"),
+    if (j[1][2] > 0 and j[2][1] < 0) then
+        print("sistema predador-presa,", vars[1], "predador"),
+    if (j[1][2] < 0 and j[2][1] > 0) then
+        print("sistema predador-presa,", vars[1], "presa"),
+    
+    j
+)$
+
+EquilPoints(f, vars) := block(
+    [
+        j: jacobian(f, vars), /* matrix jacobiana */
+        equil: solve(f, vars), /* lista de pontos de equilibrio */
+        w: makelist(), /* lista que ira conter as matrizes de cada ponto */
+        e: makelist() /* list que ira conter eivenvalues de cada ponto */
+    ],
+    for i:1 thru length(equil) do w:push(subst(equil[i], j), w), /* preenche w com substituicoes */
+    for i:1 thru length(w) do e:push(eigenvalues(w[i]), e), /* preence e com eigenvectors */
+    
+    for i:1 thru length(e) do block(
+        [x: e[i]], /* eigenvalue actual */
+        if (IsImag(x[1][1])) then                                              /* centros e focos */
+            if (IsTrueImag(x[1][1])) then                                      /* centro */
+                print("ponto", i, "(", equil[i], ")", ":", "centro, estável")
+            else
+                if (realpart(x[1][1]) > 0) then                                /* focos */
+                    print ("ponto", i, "(", equil[i], ")", ":", "foco repulsivo, instável")
+                else
+                    print ("ponto", i, "(", equil[i], ")", ":", "foco atractivo, estável")
+        else                                                                   /* pontos e nós */
+            if (IsDoubleEigen(x)) then                                         /* nós impróprios */
+                if (x[1][1] > 0) then
+                    print ("ponto", i, "(", equil[i], ")", ":", "nó impróprio repulsivo, instável")
+                else
+                    print ("ponto", i, "(", equil[i], ")", ":", "nó impróprio atractivo, estável")
+            else                                                               /* ponto de sela ou nós próprios */
+                if (x[1][1] > 0) then
+                    if (x[1][2] > 0) then
+                        print ("ponto", i, "(", equil[i], ")", ":", "nó repulsivo, instável")
+                    else
+                        print ("ponto", i, "(", equil[i], ")", ":", "ponto de sela, instável")
+                else
+                    if (x[1][2] > 0) then
+                        print ("ponto", i, "(", equil[i], ")", ":", "ponto de sela, instável")
+                    else
+                        print ("ponto", i, "(", equil[i], ")", ":", "nó atractivo, estável")
+    ), j
+)$
+
+
+/*
+Tests:
+EquilPoints([4-x1^2-4*x2^2, x2^2-x1^2+1], [x1, x2]);
+EquilPoints([x-y, x+3*y], [x, y]);
+*/

@@ -1,0 +1,17 @@
+/*
+Util em exercicios que dão a matriz de um sistema e pedem qual o período e amplitude
+
+-boots
+
+*/
+evolVar():=(print("periodo e amplitude das variaveis de estado"),
+l1:read("1a linha da matriz []"),
+l2:read("2a linha da matriz []"),
+m:matrix(l1,l2),
+e:eigenvalues(m),
+print("valores proprios", e),
+r:realpart(e[1][1]),
+i:abs(imagpart(e[1][1])),
+p:(2*%pi)/i,
+if r > 0 then print("amplitude crescente") else (if equal(r,0) then print("amplitude constante") else print("amplitude decrescente")),
+print("periodo:",p),print(""));

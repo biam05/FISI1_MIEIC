@@ -1,0 +1,27 @@
+/*
+	Para exs tipo:
+Calcule o valor da componente normal da aceleração de um ponto, num instante em que o vetor velocidade é 5î + 6ĵ
+e o vetor aceleração é -4î + 5ĵ (Unidades SI).
+
+
+Resultado: 6.27m/s² (aceleração normal)
+
+-ss, props boots pela ideia de incluir raio de curvatura
+*/
+
+acels():=(
+	print("programa aceleracoes, ss"),
+	velo:read("velocidade [ ]:"),
+	acel:read("aceleracao [ ]:"),
+	cosangul: (velo.acel)/(sqrt(velo.velo)*sqrt(acel.acel)),
+	angul: acos(cosangul),
+	aceln: acel*sin(angul),
+	acelt: acel*cosangul,
+	rcur: (velo.velo)/(sqrt(aceln.aceln)),
+	print("aceleracao tangencial: ", acelt),
+	print("modulo aceleracao tangencial: ", float(sqrt(acelt.acelt))),
+	print("aceleracao normal: ", aceln),
+	print("modulo aceleracao normal: ", float(sqrt(aceln.aceln))),
+	print("raio de curvatura: ", float(rcur)),
+	print("")
+)$

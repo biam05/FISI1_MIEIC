@@ -1,0 +1,17 @@
+/* 
+
+Para exercícios em que se pede para calcular a força de atrito necessária para que dois blocos(massa m1 
+e m2) não deslizem entre si, enquanto estão encima de um carrinho a ser puxado com uma força dd módulo F.
+
+-cm
+*/
+
+atritoBlocos():= (print("Atrito necessário entre dois para não deslizarem"),
+    m1: read("massa do bloco de baixo(maior massa): "),
+    m2: read("massa do bloco de cima(menor massa): "),
+    F: read("Módulo da força com que é puxado o carrinho: "),
+    a: F/(m1+m2),
+    Fa:solve(m2*a = Fa,Fa),
+    print("Para o bloco de cima não derrapar é necessário uma força de atrito de módulo: ", Fa),
+    print("")
+);

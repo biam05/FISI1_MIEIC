@@ -1,0 +1,14 @@
+/*
+Exercícios como: dao o momento de inercia de uma esfera pelo eixo central e pedem o momento num eixo paralelo
+
+-boots
+*/
+eixosParalel():=(
+print("momento de inercia com teorema dos eixos paralelos"),
+Icm:read("momento de inercia:"),
+m1:read("massa em kg:"),
+r1:read("raio em m:"),
+I1:subst([m = m1,R = r1],Icm),
+I2:I1+m1*r1^2,
+print("Momento 2:",I2),
+print(""));

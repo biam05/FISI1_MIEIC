@@ -1,0 +1,15 @@
+/*
+	Para exs tipo:
+O momento da inércia dum disco homogéneo de 10 cm de raio é 5.2*10^-3 kg*m^2. Determine o valor da força tangencial que deve ser aplicada na periferia do disco, para produzir uma aceleração angular de -6 rad/s^2.
+
+Resultado: 0.31N (O batch dá -0.312 porque a força deve ser aplicada no sentido negativo
+
+-ss
+*/
+mominftan():=(
+	d: read("distancia (m)"),
+	I: read("momento da inercia (kg*m²)"),
+	alpha: read("aceleracao angular desejada (rad/s²)"),
+	eq: d*'Ftang=I*alpha,
+	print("Forca tangencial a aplicar: ", float(solve(eq, 'Ftang)))
+	)$

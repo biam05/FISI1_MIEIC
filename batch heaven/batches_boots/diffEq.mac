@@ -1,0 +1,16 @@
+/*
+Quando dão a expressão de uma equação diferencial
+Devolve a jacobiana e os pontos de equilibrio
+
+-boots
+*/
+diffEq():=(
+print("eq diferencial para sistema dinamico"),
+print("nota:derivadas devem ser representadas com p, ex: xp, xpp"),
+eq:read("eq diferencial"),
+eq1:subst([xpp = yp,xp = y],eq),
+eq2:solve(eq1,yp),J:jacobian([y,rhs(eq2[1])],[x,y]),
+s:solve([y,rhs(eq2[1])]),
+print("jacobiana",J),
+print("pontos equil",s),
+print(""));

@@ -1,0 +1,21 @@
+acels - quando dao o vetor aceleracao e velocidade, calcula acels normal, tangencial e raio de curvatura
+angpesc - angulo entre vetores, etc
+atritoBlocos - 1 bloco em cima do outro com força a puxar
+acelAngPc1 - acel angular do disco rigido
+diffEq - quando dão equaçao diferencial (xpp = ...)
+eixosParalel - dao momento de inercia num eixo e pedem noutro eixo paralelo
+evolVar - quando aparece nas opçoes amplitude e periodo
+limitePol - ciclos limite com coordenadas polares
+modAcelBloco - bloco em movimento horizontal com força contraria
+pontosEquilForca - dao expressao da força e pedem pontos equilibrio, etc
+aviao - loop vertical
+modulo momento - modulo do momento da forca em relacao a origem
+mominftan - força tangencial aplicada na periferia do disco
+projetil extra - exercicios de projeteis
+kelastica - com cilindros (2 pesos diferentes e alturas diferentes)
+elastica - dao uma figura e pedem a força elastica
+atwood - maquina de atwood (roldana com 2 pesos), dá os valores das tensoes e aceleracao de cada bloco
+sisdin - introduzir sistema dinamico, da pontos de equil, jacob e eigenvalues ou introduzir eigenvalues e classifica
+pontos e cenas - analisa sistema dinamico (e 2 especies tb)
+normalrodas - calcula a normal nas rodas (bloco em cima de outro com rodas em baixo, com distancias e massas apenas)
+um-camiao-transporta-uma-caixa-retangular-homogenea-com-60cm-de-largura-na-base-e-150cm-de-altura - está no nome lol

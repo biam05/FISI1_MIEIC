@@ -1,0 +1,19 @@
+/*
+	Para exs tipo:
+Um piloto de corridas de aviões, com 100kg, executa um loop vertical de 400m de raio, com velocidade constante em módulo. Sabendo que a força vertical exercida no piloto pela base do assento do avião é igual a 2450N, no ponto mais baixo do loop, calcule a mesma força no ponto mais alto do loop.
+
+Resultado: 490N
+
+-ss
+*/
+
+aviao():=(
+	
+	massa: read("Massa piloto (kg): "),
+	raio: read("Raio loop (m): "),
+	F: read("Forca exercida pelo assento na base do loop (N)"),
+	Fc: F - massa*9.8,
+	eq: solve(Fc = massa*9.8 + N),
+	print(eq)
+
+)$

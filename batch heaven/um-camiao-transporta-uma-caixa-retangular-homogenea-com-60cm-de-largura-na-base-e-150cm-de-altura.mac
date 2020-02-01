@@ -1,0 +1,10 @@
+funcao():=(
+
+	print("quando o camiao acelera a caixa derrapa. determine valor maxima da aceleracao para que caixa nao rode"),
+	print(" "),
+
+	larg:read("largura da base (cm) : "),
+	altura:read("altura (cm) : "),
+
+	float(solve(a*m*altura/2/100 - m*9.8*larg/100/2 = 0,a))
+)$

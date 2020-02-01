@@ -1,0 +1,17 @@
+/*
+Calcula a normal nas rodas (bloco em cima de outro com rodas em baixo, com distancias e massas apenas).
+*/
+
+normalRodas():=(
+	print("Importante: o eixo e a roda contraria a que pedem"),
+	m1: read("massa bloco de baixo: "),
+	m2: read("massa bloco de cima: "),
+	drodas: read("distancia entre rodas: "),
+	d1: read("comprimento bloco/2 menos distancia ao eixo, ou seja, distancia do centro do bloco ao eixo (bloco de baixo): "),
+	d2: read("comprimento bloco/2 menos distancia ao eixo, ou seja, distancia do centro do bloco ao eixo (bloco de cima): "),
+	p2: m2*9.8,
+	p1: m1*9.8,
+	res: float(solve(N*drodas = p2*d2+p1*d1,N)),
+	print("Normal: ", res),
+	print("")
+);

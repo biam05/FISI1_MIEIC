@@ -1,0 +1,14 @@
+/*
+Quando dão a expressão da Ft e perguntam algo sobre os pontos de equilibrio.
+Acho que tb funciona se for em coordendas polares, mas passem sempre a expressão em ordem a s, senão nao funciona
+
+-boots
+*/
+pontosEquilForca():=(
+Ft:read("expressao da forca em ordem a s:"),
+s1:solve(Ft),
+print("pontos equil:",s1),
+print("ver grafico")
+,print("quando vai de negativo para positivo, ponto e instavel"),
+print("quando vai de positivo para negativo e estavel")
+,plot2d(Ft,[s,-6,6]),print(""));

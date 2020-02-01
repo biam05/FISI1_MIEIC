@@ -1,0 +1,14 @@
+/*
+Para ciclos limite em coordenadas polares, quando dao a expressao de rp
+
+-boots
+*/
+limitePol():=(
+rp:read("expressao de rp"),
+s:solve(rp),
+print("zeros, apenas contam os positivos e diferentes de 0: ",s),
+print("ver grafico"),
+print("se for de positivo para negativo, ciclo atrativo"),
+print("se for de negativo para positivo, ciclo repulsivo"),
+plot2d(rp,[r,0,5]),
+print(""));

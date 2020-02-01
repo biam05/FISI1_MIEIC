@@ -1,0 +1,15 @@
+/*
+Para exercicios com um bloco em movimento e uma força com sentido contrario ao movimento
+
+-boots
+*/
+modAcelBloco():=(
+print("modulo aceleracao bloco"),
+m:read("massa bloco:"),
+F:read("forca externa:"),
+coef:read("coeficiente atrito cinetico:"),
+Fa:coef*(m*(-9.8)),
+sumFx:(-F)+Fa,
+acel:abs(float(sumFx/m)),
+print("aceleracao do bloco:",acel),
+print(""));

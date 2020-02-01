@@ -1,0 +1,16 @@
+/*
+	Calcula o ângulo do produto escalar de 2 vetores.
+	Fórmula melhorada perante o que já existia.
+
+-ss
+*/
+
+angulo():=(	
+		v1: read ("1º vector - introduzir na forma [ ]"),
+		v2: read ("2º vector - introduzir na forma [ ]"),
+		p_escalar: v1.v2,
+		angulo: acos(p_escalar/(sqrt(v1.v1)*sqrt(v2.v2))),
+		print ("produto escalar: ", p_escalar),
+		print ("angulo radianos: ", float(angulo)),
+		print ("angulo graus: ", float(180*angulo/%pi))
+		)$

@@ -1,0 +1,16 @@
+/*Para exs tipo:
+	"Aplica-se uma forca [x,y] num ponto com vetor posicao [x,y].
+	Determine o modulo do momento dessa forca, em relacao a origem
+
+-ss
+*/
+
+fpprintprec: 4$
+modmomento():=(
+	print("programa modulo momento, ss"),
+	F: read("forca [x,y]: "),
+	pos: read("posicao [x,y]: "),
+	Mat: matrix(F, pos),
+	print("O modulo do momento em relacao a origem e: "),
+	ModMom: abs(determinant(Mat))
+)$

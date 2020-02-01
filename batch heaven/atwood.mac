@@ -1,0 +1,25 @@
+/*
+	Calcula máquina de atwood, mesmo sem valores.
+	Máquina de atwood é quando se tem dois pesos unidos por uma roldana basically,
+	e essa poderá ou não ter massa que poderá ou não ser desprezável.
+
+
+-ss
+*/
+
+atwood():=(
+		massa1: read ("introduza a primeira massa: "),
+		massa2: read ("introduza a segunda massa: "),
+		roldana: read ("introduza a massa da roldana (zero se for desprezavel): "),
+		gravidade: read ("introduza a gravidade: "),
+		
+		aceleracao: ((massa1-massa2)*gravidade)/(massa1+massa2+roldana/2),
+		T1: massa1*gravidade-massa1*aceleracao,
+		T2: massa2*gravidade-massa2*aceleracao,
+		
+
+
+		
+		print("T1 -->", T1,"N T2 --->", T2, "N aceleracao---> ", aceleracao, "m/s²")
+		
+		)$

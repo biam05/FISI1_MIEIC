@@ -1,0 +1,12 @@
+/*
+Para exercicios em que falam da aceleração do disco rígido
+
+-boots
+*/
+AcelAngPC():=
+(print("Aceleracao angular do disco"),
+nRPM:read("numero rotacoes por minuto:"),
+t1:read("tempo a partir do qual funciona normalmente:"),
+res:float(solve(integrate(alfa,t,0,t1) = integrate(1,omega,0,(2*%pi)/(1/(nRPM/60))),alfa)),
+print(res),
+print(""));

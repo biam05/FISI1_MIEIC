@@ -1,0 +1,35 @@
+fpprintprec: 4$
+projetil():=(
+	print("programa altura maxima projectil, ss"),
+	a_inicial:read("altura inicial:"),
+	angulo:read("angulo:"),
+	print("escrever x para vxinicial ou y para vyinicial (v será calculado a partir do angulo) - apenas valor para vtotal"),
+	v_inicial:read("velocidade inicial:"),
+	
+	/* Dar x para vxinicial, y para vyinicial */
+	
+	if (v_inicial = x) then(
+		v_inicialx:read("velocidade em x:"),
+		v_inicial:v_inicialx/cos(angulo * %pi / 180)
+	)else
+		if(v_inicial = y)then(
+			v_y:read("velocidade em y:"),
+			t2:read("tempo:"),
+			v_inicial:(v_y+9.8*t2)/sin(angulo * %pi / 180)),
+			
+	print("altura maxima atingida:" (float(a_inicial+((v_inicial*(sin(angulo*%pi/180)))^2)/(2*9.8)))),
+	print("tempo maximo de subida: " (float((v_inicial*sin(angulo*%pi/180))/9.8))),
+	tq:(float (solve (a_inicial+v_inicial*((sin(angulo*%pi/180))*t)-0.5*9.8*t^2, t))),
+	print("tempo total de queda: "),
+	print(tq),
+	print("alcance maximo: " (float(v_inicial*(cos(angulo*%pi/180))*rhs(tq[2])))),
+	print("velocidade final em Y:" ),
+	vfy:rhs( float(v_inicial*sin(angulo*%pi/180) - 9.8*tq[2]) ),
+	print(vfy),
+	print("velocidade final nas duas componentes ([x,y]):"),
+	v_final: [v_inicial*cos(angulo*%pi/180), vfy],
+	print(float(v_final)),
+	print("angulo que a velocidade final faz com a vertical (em graus) (Nota: usando modulo nas velocidades porque era assim que o ex estava resolvido):"),
+	angulo_final: float(float(atan(abs(v_inicial*cos(angulo*%pi/180)) / abs(vfy))) * 180/%pi)
+	/* print(angulo_final) */
+)$
